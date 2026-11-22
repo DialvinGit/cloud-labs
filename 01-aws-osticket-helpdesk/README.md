@@ -100,7 +100,7 @@ flowchart LR
 * **Database Administration:** Used MySQL to recover access to the application.
 
 ## Configuration Files
-* [Customer Portal Stylesheet](./css/custom-style.css)
-* [Agent Panel Stylesheet](./css/airye-scp.css)
+* [Customer Portal Stylesheet](./custom-style.css)
+* [Agent Panel Stylesheet](./airye-scp.css)
 
 Server credentials, SSH keys and the osTicket configuration file are intentionally not included.
