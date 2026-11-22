@@ -1,0 +1,1294 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap');
+
+/* ==========================================================
+   AIRYE SUPPORT PORTAL — FULL RESTYLE
+   osTicket 1.18.x | Customer Portal
+
+   Direction: calm, open, legible. Deep ink hero is the one
+   bold moment; everything else stays quiet and flat.
+   Palette:  Ink #0B1626  Signal #146EF5  Mist #EAF1F8
+             Paper #FBFCFD  Line #D5DEE8
+   Type:     Bricolage Grotesque (headings)
+             Instrument Sans (body, forms)
+   ========================================================== */
+
+/* 1. TOKENS
+   ---------------------------------------------------------- */
+:root {
+    --ink: #0B1626;
+    --ink-soft: #1B2A3F;
+    --text: #2B3A4F;
+    --muted: #5C6B80;
+
+    --signal: #146EF5;
+    --signal-dark: #0D58C8;
+    --signal-tint: #E8F0FE;
+
+    --paper: #FBFCFD;
+    --white: #FFFFFF;
+    --mist: #EAF1F8;
+    --line: #D5DEE8;
+    --line-strong: #B4C2D3;
+
+    --ok: #146C43;
+    --warn: #8A5A00;
+    --bad: #A52A2A;
+
+    --r-control: 8px;
+    --r-panel: 16px;
+
+    --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Instrument Sans", -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    --ease: 160ms ease;
+}
+
+/* 2. FOUNDATION
+   ---------------------------------------------------------- */
+html {
+    -webkit-text-size-adjust: 100%;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+    background: var(--signal);
+    color: #fff;
+}
+
+a {
+    color: var(--signal);
+    text-decoration: none;
+    transition: color var(--ease);
+}
+
+a:hover {
+    color: var(--signal-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid rgba(20, 110, 245, 0.35);
+    outline-offset: 2px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid var(--line);
+    margin: 24px 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(28px, 3.2vw, 38px); }
+h2 { font-size: clamp(22px, 2.4vw, 28px); }
+h3 { font-size: 20px; }
+h4 { font-size: 17px; }
+
+p {
+    margin-top: 0;
+    line-height: 1.7;
+}
+
+small, .muted, .text-muted {
+    color: var(--muted);
+}
+
+pre, code {
+    overflow-wrap: anywhere;
+}
+
+pre {
+    max-width: 100%;
+    overflow-x: auto;
+    padding: 14px 16px;
+    background: var(--mist);
+    border-radius: var(--r-control);
+}
+
+/* 3. PAGE STRUCTURE
+   ---------------------------------------------------------- */
+#container {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 28px;
+    background: transparent;
+}
+
+#content {
+    padding: 8px 0 64px;
+}
+
+#main {
+    min-width: 0;
+}
+
+#footer {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 28px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+}
+
+#footer a {
+    color: var(--muted);
+}
+
+#footer a:hover {
+    color: var(--signal);
+}
+
+/* 4. HEADER AND NAVIGATION
+   ---------------------------------------------------------- */
+#header {
+    position: relative;
+    padding: 22px 0 8px;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+#header a {
+    color: var(--ink);
+}
+
+#header a:hover {
+    color: var(--signal);
+    text-decoration: none;
+}
+
+#header p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+#header p a {
+    color: var(--text);
+    font-weight: 500;
+}
+
+#header p a:hover {
+    color: var(--signal);
+}
+
+#header h1,
+#header h2,
+#header h3 {
+    color: var(--ink);
+}
+
+#header .airye-brand {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 3px;
+    float: none;
+    text-decoration: none;
+}
+
+#header .airye-brand-name {
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1;
+}
+
+#header .airye-brand-caption {
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+}
+
+#header .airye-brand:hover .airye-brand-name {
+    color: var(--signal);
+}
+
+#nav {
+    margin: 12px 0 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--line);
+}
+
+#nav li {
+    display: inline-block;
+    margin: 0 4px -1px 0;
+    padding: 0;
+    list-style: none;
+    background: none;
+    border: 0;
+}
+
+#nav a {
+    display: inline-block;
+    padding: 12px 14px;
+    color: var(--muted);
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+    transition: color var(--ease), border-color var(--ease);
+}
+
+#nav a:hover,
+#nav a:focus {
+    color: var(--ink);
+    border-bottom-color: var(--line-strong);
+}
+
+#nav li.active a,
+#nav .active a {
+    color: var(--ink);
+    font-weight: 600;
+    border-bottom-color: var(--signal);
+}
+
+/* 5. BUTTONS
+   Default = quiet outline. Primary = solid signal blue.
+   ---------------------------------------------------------- */
+button,
+.button,
+a.button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    display: inline-block;
+    padding: 10px 18px;
+    background: var(--white);
+    color: var(--ink);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-control);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    text-shadow: none;
+    box-shadow: none;
+    cursor: pointer;
+    transition: background-color var(--ease), border-color var(--ease),
+                color var(--ease), transform var(--ease);
+}
+
+button:hover,
+.button:hover,
+a.button:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover {
+    background: var(--mist);
+    border-color: var(--ink);
+    color: var(--ink);
+    text-decoration: none;
+}
+
+button:active,
+.button:active,
+input[type="submit"]:active {
+    transform: translateY(1px);
+}
+
+input[type="submit"],
+button[type="submit"],
+.button.primary,
+a.blue.button,
+.blue.button {
+    background: var(--signal);
+    border-color: var(--signal);
+    color: #fff;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover,
+.button.primary:hover,
+a.blue.button:hover,
+.blue.button:hover {
+    background: var(--signal-dark);
+    border-color: var(--signal-dark);
+    color: #fff;
+}
+
+/* 6. FORMS
+   ---------------------------------------------------------- */
+label {
+    display: inline-block;
+    margin-bottom: 6px;
+    color: var(--ink);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input[type="tel"],
+input[type="number"],
+input[type="url"],
+select,
+textarea {
+    max-width: 100%;
+    padding: 11px 13px;
+    background: var(--white);
+    color: var(--ink);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--r-control);
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.4;
+    box-shadow: none;
+    transition: border-color var(--ease), box-shadow var(--ease);
+}
+
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="search"]:hover,
+select:hover,
+textarea:hover {
+    border-color: var(--muted);
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+select:focus,
+textarea:focus {
+    border-color: var(--signal);
+    box-shadow: 0 0 0 3px rgba(20, 110, 245, 0.15);
+    outline: none;
+}
+
+textarea {
+    min-height: 140px;
+    resize: vertical;
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #8A98AB;
+    opacity: 1;
+}
+
+input[type="search"] {
+    min-height: 44px;
+}
+
+/* osTicket form blocks */
+form table {
+    background: transparent;
+    border: 0;
+}
+
+form td, form th {
+    border: 0;
+}
+
+.form-header, .form-header h3 {
+    color: var(--ink);
+}
+
+.required, .error-inline, font.error {
+    color: var(--bad);
+}
+
+/* 7. ALERTS
+   ---------------------------------------------------------- */
+#msg_notice, #msg_warning, #msg_error,
+.alert, .notice, .warning, .error, .success {
+    margin: 0 0 20px;
+    padding: 12px 16px;
+    border: 1px solid;
+    border-left-width: 4px;
+    border-radius: var(--r-control);
+    background-image: none;
+}
+
+#msg_notice, .alert-info, .notice {
+    color: var(--ink-soft);
+    background: var(--signal-tint);
+    border-color: #B9D1FB;
+    border-left-color: var(--signal);
+}
+
+.alert-success, .success {
+    color: var(--ok);
+    background: #EDF8F1;
+    border-color: #BFE3CC;
+    border-left-color: var(--ok);
+}
+
+#msg_warning, .alert-warning, .warning {
+    color: var(--warn);
+    background: #FFF7E6;
+    border-color: #F1D9A3;
+    border-left-color: #D18B00;
+}
+
+#msg_error, .alert-danger, .error {
+    color: var(--bad);
+    background: #FDEEEE;
+    border-color: #F0C2C2;
+    border-left-color: var(--bad);
+}
+
+/* 8. TABLES
+   ---------------------------------------------------------- */
+table {
+    max-width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+table.list,
+table#ticketTable,
+table.infoTable,
+#ticketInfo {
+    width: 100%;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--r-panel);
+    overflow: hidden;
+}
+
+th {
+    padding: 12px 16px;
+    background: var(--mist);
+    color: var(--ink);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+}
+
+th a {
+    color: var(--ink);
+}
+
+td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: middle;
+}
+
+tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+tbody tr {
+    transition: background-color var(--ease);
+}
+
+tbody tr:hover {
+    background: #F4F8FC;
+}
+
+/* 9. TICKET VIEW AND THREAD
+   ---------------------------------------------------------- */
+.thread-entry {
+    margin: 0 0 16px;
+    padding: 0;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--r-panel);
+    box-shadow: none;
+    overflow: hidden;
+}
+
+.thread-entry .header {
+    padding: 12px 18px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.thread-entry .header b,
+.thread-entry .header strong {
+    color: var(--ink);
+}
+
+.thread-entry .thread-body {
+    padding: 18px;
+    color: var(--text);
+    line-height: 1.75;
+    overflow-wrap: anywhere;
+}
+
+/* Replies from the support team carry a blue spine */
+.thread-entry.response {
+    border-left: 4px solid var(--signal);
+}
+
+.thread-entry.response .header {
+    background: var(--signal-tint);
+}
+
+.thread-entry a {
+    overflow-wrap: anywhere;
+}
+
+/* 10. LANDING PAGE
+   Hero is the memorable element. Sidebar stays flat.
+   ---------------------------------------------------------- */
+#landing_page {
+    display: grid;
+    grid-template-columns: minmax(240px, 300px) minmax(0, 1fr);
+    grid-template-areas: "actions welcome";
+    align-items: start;
+    gap: 40px;
+    width: 100%;
+    margin: 24px auto 0;
+}
+
+#landing_page > .main-content {
+    grid-area: welcome;
+    float: none;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
+}
+
+#landing_page > .sidebar {
+    grid-area: actions;
+    float: none;
+    width: 100%;
+    max-width: none;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* Hero */
+#landing_page > .main-content > .thread-body {
+    position: relative;
+    min-height: 340px;
+    padding: clamp(32px, 5vw, 64px);
+    background: var(--ink);
+    color: #C9D4E3;
+    border: 0;
+    border-radius: 24px;
+    box-shadow: none;
+    overflow: hidden;
+    overflow-wrap: anywhere;
+}
+
+/* Concentric rings, like a signal radiating outward */
+#landing_page > .main-content > .thread-body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-radial-gradient(
+        circle at 100% 0%,
+        transparent 0 46px,
+        rgba(255, 255, 255, 0.07) 46px 47px
+    );
+}
+
+#landing_page > .main-content > .thread-body > * {
+    position: relative;
+    max-width: 56ch;
+}
+
+#landing_page > .main-content > .thread-body h1,
+#landing_page > .main-content > .thread-body h2 {
+    margin-bottom: 18px;
+    color: #fff;
+    font-size: clamp(34px, 4.6vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
+}
+
+#landing_page > .main-content > .thread-body p {
+    color: #C9D4E3;
+    font-size: 17px;
+    line-height: 1.65;
+}
+
+#landing_page > .main-content > .thread-body a {
+    color: #8DB8FF;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+#landing_page > .main-content > .thread-body a:hover {
+    color: #fff;
+}
+
+/* Sidebar actions: no card shell, just stacked buttons */
+#landing_page .sidebar .front-page-button {
+    width: 100%;
+    margin: 0 0 32px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+#landing_page .front-page-button p {
+    width: 100%;
+    margin: 0 0 10px;
+}
+
+#landing_page .front-page-button p:last-child {
+    margin-bottom: 0;
+}
+
+#landing_page .front-page-button a.button {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 50px;
+    margin: 0;
+    padding: 12px 18px;
+    border-radius: var(--r-control);
+    font-size: 15px;
+    text-align: center;
+}
+
+#landing_page .front-page-button a.blue.button {
+    background: var(--signal);
+    border-color: var(--signal);
+    color: #fff;
+}
+
+#landing_page .front-page-button a.blue.button:hover {
+    background: var(--signal-dark);
+    border-color: var(--signal-dark);
+}
+
+#landing_page .front-page-button a.green.button {
+    background: var(--white);
+    border-color: var(--line-strong);
+    color: var(--ink);
+}
+
+#landing_page .front-page-button a.green.button:hover {
+    background: var(--mist);
+    border-color: var(--ink);
+}
+
+/* Featured questions and resources: plain lists with a top rule */
+#landing_page .sidebar .content section {
+    margin: 0 0 28px;
+    padding: 16px 0 0;
+    background: transparent;
+    border: 0;
+    border-top: 2px solid var(--ink);
+    border-radius: 0;
+    box-shadow: none;
+    overflow-wrap: anywhere;
+}
+
+#landing_page .sidebar .content .header {
+    margin: 0 0 8px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    color: var(--ink);
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+
+#landing_page .sidebar .content section > div:not(.header) {
+    padding: 9px 0;
+    border-bottom: 1px solid var(--line);
+}
+
+#landing_page .sidebar .content section > div:last-child {
+    border-bottom: 0;
+}
+
+#landing_page .sidebar .content section a {
+    color: var(--text);
+    font-weight: 500;
+}
+
+#landing_page .sidebar .content section a:hover {
+    color: var(--signal);
+}
+
+/* 11. PANELS (used on inner pages)
+   ---------------------------------------------------------- */
+.panel,
+.well,
+.box,
+#content .section {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--r-panel);
+    box-shadow: none;
+}
+
+.panel-heading {
+    background: var(--paper);
+    color: var(--ink);
+    border-color: var(--line);
+    font-weight: 600;
+}
+
+.panel-footer {
+    background: var(--paper);
+    border-color: var(--line);
+}
+
+/* Login and registration boxes */
+.login-box,
+#clients-login {
+    max-width: 440px;
+    margin-right: auto;
+    margin-left: auto;
+    padding: 32px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--r-panel);
+}
+
+/* 12. MOTION
+   ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* 13. RESPONSIVE
+   ---------------------------------------------------------- */
+@media (max-width: 900px) {
+    #landing_page {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-areas:
+            "welcome"
+            "actions";
+        gap: 28px;
+    }
+
+    #landing_page > .main-content > .thread-body {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 640px) {
+    #container {
+        padding: 0 16px;
+    }
+
+    #footer {
+        padding: 24px 16px;
+    }
+
+    #nav a {
+        padding: 10px 10px;
+        font-size: 14px;
+    }
+
+    #landing_page > .main-content > .thread-body {
+        padding: 28px 22px;
+        border-radius: 18px;
+    }
+
+    th, td {
+        padding: 10px 10px;
+    }
+
+    /* 16px stops iOS from zooming into inputs */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="search"],
+    select,
+    textarea {
+        font-size: 16px;
+    }
+
+    .login-box,
+    #clients-login {
+        padding: 22px;
+    }
+}
+
+/* ==========================================================
+   14. OSTICKET DEFAULT OVERRIDES
+   osTicket's own stylesheet puts a white boxed shell around the
+   page and draws the nav as a shadowed bar with icons. These rules
+   remove both. !important is used because main.css loads with
+   equal or higher specificity.
+   ========================================================== */
+
+/* Full-width page, no boxed shell */
+html, body {
+    min-height: 100%;
+    background: var(--paper) !important;
+}
+
+body #container,
+#container {
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 clamp(20px, 4vw, 64px) !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+#header, #content, #footer {
+    width: auto !important;
+    max-width: none !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+#content {
+    padding: 8px 0 72px !important;
+}
+
+#landing_page {
+    max-width: none;
+}
+
+/* Navigation: a flat row of tabs sitting on one thin line */
+ul#nav, #nav {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 4px;
+    width: 100% !important;
+    margin: 14px 0 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--line) !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+#nav li {
+    float: none !important;
+    display: block !important;
+    margin: 0 0 -1px !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+#nav li a,
+#nav a {
+    display: block !important;
+    margin: 0 !important;
+    padding: 12px 16px !important;
+    background: transparent !important;
+    background-image: none !important;   /* removes the clip-art icons */
+    color: var(--muted) !important;
+    font-size: 15px;
+    font-weight: 500;
+    border: 0 !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    text-decoration: none !important;
+}
+
+#nav li a:hover,
+#nav a:hover {
+    color: var(--ink) !important;
+    border-bottom-color: var(--line-strong) !important;
+}
+
+/* osTicket marks the current page with class "active" on the link */
+#nav a.active,
+#nav li.active a,
+#nav li a.active {
+    color: var(--ink) !important;
+    font-weight: 600;
+    background: transparent !important;
+    border-bottom-color: var(--signal) !important;
+}
+
+/* Guest User | Sign In, aligned with the brand */
+#header p {
+    margin: 4px 0 0 !important;
+}
+
+#footer {
+    margin-top: 16px !important;
+    padding: 28px 0 40px !important;
+    border-top: 1px solid var(--line) !important;
+}
+/* Fix nav line running through the tab text */
+ul#nav, #nav {
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    line-height: 1.4 !important;
+    align-items: stretch;
+}
+
+#nav li {
+    height: auto !important;
+    min-height: 0 !important;
+    line-height: 1.4 !important;
+}
+
+#nav li a,
+#nav a {
+    height: auto !important;
+    min-height: 0 !important;
+    line-height: 1.4 !important;
+    padding: 12px 16px 14px !important;
+    overflow: visible !important;
+    white-space: nowrap;
+}
+
+/* Underline sits under the text, overlapping the nav line by 1px */
+#nav a.active,
+#nav li.active a,
+#nav li a.active {
+    margin-bottom: -1px !important;
+    border-bottom: 2px solid var(--signal) !important;
+}
+/* More space between the Airye name and "Customer Support" */
+#header .airye-brand {
+    gap: 8px !important;
+}
+/* Make the Sign In button visible */
+input[type="submit"],
+button[type="submit"],
+.btn_sm,
+#clients-login input[type="submit"],
+#clients-login .btn_sm,
+form input.btn_sm {
+    display: inline-block !important;
+    min-width: 110px;
+    height: auto !important;
+    padding: 11px 22px !important;
+    background: var(--signal) !important;
+    background-image: none !important;
+    color: #fff !important;
+    border: 1px solid var(--signal) !important;
+    border-radius: var(--r-control) !important;
+    font-family: var(--font-body) !important;
+    font-size: 15px !important;
+    font-weight: 600 !important;
+    line-height: 1.4 !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover,
+button[type="submit"]:hover,
+.btn_sm:hover {
+    background: var(--signal-dark) !important;
+    border-color: var(--signal-dark) !important;
+    color: #fff !important;
+}
+/* ==========================================================
+   15. MOBILE AND TABLET
+   ========================================================== */
+
+/* Tablet and below */
+@media (max-width: 900px) {
+
+    /* Header: brand on top, user links underneath */
+    #header {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        padding-top: 16px !important;
+    }
+
+    #header .pull-right,
+    #header p,
+    #header .pull-left {
+        float: none !important;
+        text-align: left !important;
+        width: auto !important;
+    }
+
+    /* Landing page stacks: hero first, buttons under it */
+    #landing_page {
+        grid-template-columns: minmax(0, 1fr) !important;
+        grid-template-areas:
+            "welcome"
+            "actions" !important;
+        gap: 24px !important;
+    }
+
+    #landing_page > .main-content > .thread-body {
+        min-height: 0 !important;
+    }
+
+    /* Login page: stack the form, links and lock icon */
+    #clientLogin,
+    #clientLogin > div,
+    #clientLogin .login-box,
+    #clientLogin [style*="display"] {
+        display: block !important;
+        width: 100% !important;
+        max-width: none !important;
+        float: none !important;
+    }
+
+    #clientLogin .login-box,
+    .login-box {
+        margin-bottom: 20px !important;
+    }
+
+    /* Hide the clip-art padlock on small screens */
+    #clientLogin img,
+    #clientLogin .pull-right {
+        display: none !important;
+    }
+}
+
+/* Phones */
+@media (max-width: 640px) {
+
+    body {
+        font-size: 16px;
+    }
+
+    #container {
+        padding: 0 16px !important;
+    }
+
+    #content {
+        padding-bottom: 48px !important;
+    }
+
+    /* Brand a bit smaller */
+    #header .airye-brand-name {
+        font-size: 28px;
+    }
+
+    /* Nav: one scrollable row instead of wrapping */
+    ul#nav, #nav {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        gap: 0 !important;
+        margin-right: -16px !important;
+        padding-right: 16px !important;
+    }
+
+    #nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    #nav li a,
+    #nav a {
+        padding: 12px 12px 14px !important;
+        font-size: 14px !important;
+        white-space: nowrap;
+    }
+
+    /* Hero */
+    #landing_page > .main-content > .thread-body {
+        padding: 28px 22px !important;
+        border-radius: 18px !important;
+    }
+
+    #landing_page > .main-content > .thread-body h1,
+    #landing_page > .main-content > .thread-body h2 {
+        font-size: 32px !important;
+    }
+
+    #landing_page > .main-content > .thread-body p {
+        font-size: 16px !important;
+    }
+
+    #landing_page > .main-content > .thread-body > * {
+        max-width: none !important;
+    }
+
+    /* Page headings */
+    h1 { font-size: 28px; }
+    h2 { font-size: 23px; }
+
+    /* Forms: full width, big touch targets, no iOS zoom */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="search"],
+    input[type="tel"],
+    input[type="number"],
+    input[type="url"],
+    select,
+    textarea {
+        width: 100% !important;
+        font-size: 16px !important;
+        min-height: 46px;
+    }
+
+    /* Ticket and registration forms: one field per row */
+    #ticketForm table,
+    #ticketForm tbody,
+    #ticketForm tr,
+    #ticketForm td,
+    #ticketForm th,
+    form.client table,
+    form.client tbody,
+    form.client tr,
+    form.client td,
+    form.client th {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    #ticketForm td,
+    form.client td {
+        padding: 6px 0 !important;
+    }
+
+    /* Buttons: full width and easy to tap */
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"],
+    button,
+    .btn_sm,
+    a.button {
+        min-height: 46px;
+    }
+
+    form p input[type="submit"],
+    form p input[type="reset"],
+    form p input[type="button"] {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* Ticket list tables scroll sideways inside their own area */
+    table#ticketTable,
+    table.list {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    th, td {
+        padding: 10px !important;
+        font-size: 14px;
+    }
+
+    /* Ticket thread */
+    .thread-entry .header {
+        padding: 10px 14px !important;
+    }
+
+    .thread-entry .thread-body {
+        padding: 14px !important;
+    }
+
+    /* Login box */
+    #clientLogin .login-box,
+    .login-box {
+        padding: 20px !important;
+    }
+
+    /* Footer */
+    #footer {
+        padding: 24px 0 32px !important;
+    }
+}
+/* Fix header overlap on phones and tablets */
+@media (max-width: 900px) {
+
+    #header {
+        display: flex !important;
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        padding: 16px 0 0 !important;
+    }
+
+    /* Brand first, Guest User / Sign In underneath */
+    #header #logo,
+    #header a#logo,
+    #header .airye-brand {
+        order: 1;
+        position: static !important;
+        float: none !important;
+        display: inline-flex !important;
+        width: auto !important;
+        height: auto !important;
+        min-height: 0 !important;
+        margin: 0 !important;
+        line-height: 1 !important;
+    }
+
+    #header p,
+    #header .pull-right {
+        order: 2;
+        position: static !important;
+        float: none !important;
+        width: auto !important;
+        margin: 10px 0 0 !important;
+        text-align: left !important;
+    }
+
+    /* Nav sits below the header instead of on top of it */
+    #nav, ul#nav {
+        position: relative !important;
+        clear: both;
+        margin-top: 16px !important;
+        top: auto !important;
+    }
+}

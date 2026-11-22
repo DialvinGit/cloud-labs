@@ -1,0 +1,1470 @@
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600;700&display=swap');
+
+/* ==========================================================
+   AIRYE — AGENT PANEL (osTicket 1.18 /scp)
+   Same palette and type as the customer portal.
+   ========================================================== */
+
+:root {
+    --ink: #0B1626;
+    --ink-soft: #1B2A3F;
+    --text: #2B3A4F;
+    --muted: #5C6B80;
+    --signal: #146EF5;
+    --signal-dark: #0D58C8;
+    --signal-tint: #E8F0FE;
+    --paper: #F6F8FB;
+    --white: #FFFFFF;
+    --mist: #EAF1F8;
+    --line: #D5DEE8;
+    --line-strong: #B4C2D3;
+    --ok: #146C43;
+    --bad: #A52A2A;
+    --r-control: 8px;
+    --r-panel: 14px;
+    --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+    --font-body: "Instrument Sans", -apple-system, BlinkMacSystemFont,
+                 "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* 1. FOUNDATION
+   ---------------------------------------------------------- */
+html, body {
+    background: var(--paper) !important;
+    color: var(--text);
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Force the body font everywhere except icon fonts */
+body,
+body :not(i):not([class*="icon-"]):not([class^="fa"]) {
+    font-family: var(--font-body) !important;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+a {
+    color: var(--signal);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--signal-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+h1, h2, h3, h4 {
+    color: var(--ink) !important;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+/* 2. PAGE SHELL: remove the boxed white frame
+   ---------------------------------------------------------- */
+#container {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 clamp(16px, 3vw, 40px) 40px !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+#content, #pagebody {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+#content {
+    padding: 20px 0 0 !important;
+}
+
+#footer {
+    margin-top: 24px !important;
+    padding: 24px 0 8px !important;
+    background: transparent !important;
+    border-top: 1px solid var(--line) !important;
+    color: var(--muted) !important;
+    font-size: 13px;
+    text-align: center;
+}
+
+#footer a {
+    color: var(--muted) !important;
+}
+
+/* 3. HEADER
+   ---------------------------------------------------------- */
+#header {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 18px 0 14px !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+#header::before,
+#header::after {
+    content: none !important;
+    display: none !important;
+}
+
+#header #logo {
+    position: static !important;
+    float: none !important;
+    display: inline-block;
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    background: none !important;
+    text-decoration: none !important;
+}
+
+/* Replace the osTicket kangaroo with the Airye name.
+   If you upload a logo in Admin Panel > Settings > Company,
+   delete the next two rules. */
+#header #logo img {
+    display: none !important;
+}
+
+#header #logo::after {
+    content: "Airye";
+    color: var(--ink);
+    font-family: var(--font-display) !important;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1;
+}
+
+#header #logo:hover::after {
+    color: var(--signal);
+}
+
+/* "Welcome, name | Admin Panel | Profile | Log Out" */
+#header p#info,
+#header #info {
+    position: static !important;
+    float: none !important;
+    width: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: var(--muted) !important;
+    font-size: 14px;
+    text-align: right;
+}
+
+#header #info b,
+#header #info strong {
+    color: var(--ink);
+    font-weight: 600;
+}
+
+#header #info a {
+    color: var(--text) !important;
+    font-weight: 500;
+}
+
+#header #info a:hover {
+    color: var(--signal) !important;
+}
+
+/* 4. NAVIGATION
+   Main tabs have NO baseline. Every border, shadow and
+   pseudo-element on the bar is removed so no line can run
+   through the text. The current tab keeps a blue underline.
+   ---------------------------------------------------------- */
+ul#nav,
+#nav {
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: stretch !important;
+    gap: 2px;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    line-height: 1.4 !important;
+    background: none !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-top: 0 !important;
+    border-bottom: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+#nav::before,
+#nav::after,
+#nav li::before,
+#nav li::after {
+    content: none !important;
+    display: none !important;
+    border: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+#nav li,
+ul#nav > li {
+    position: relative !important;
+    float: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.4 !important;
+    background: none !important;
+    background-image: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+#nav li a,
+#nav a {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 12px 16px 14px !important;
+    background: none !important;
+    background-image: none !important;
+    color: var(--muted) !important;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4 !important;
+    white-space: nowrap;
+    border: 0 !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    text-decoration: none !important;
+}
+
+#nav li a:hover,
+#nav a:hover {
+    color: var(--ink) !important;
+    border-bottom: 2px solid var(--line-strong) !important;
+}
+
+#nav li.active a,
+#nav li a.active,
+#nav a.active {
+    color: var(--ink) !important;
+    font-weight: 600;
+    background: none !important;
+    border-bottom: 2px solid var(--signal) !important;
+}
+
+/* Second row on admin pages: Help Topics / Filters / SLA ... */
+#sub_nav,
+ul#sub_nav {
+    display: flex !important;
+    flex-wrap: wrap;
+    gap: 4px;
+    height: auto !important;
+    margin: 16px 0 0 !important;
+    padding: 6px !important;
+    list-style: none !important;
+    background: var(--white) !important;
+    background-image: none !important;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--r-panel) !important;
+    box-shadow: none !important;
+}
+
+#sub_nav li {
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+}
+
+#sub_nav li a,
+#sub_nav a {
+    display: inline-block !important;
+    padding: 8px 14px !important;
+    background: transparent !important;
+    background-image: none !important;
+    color: var(--text) !important;
+    font-weight: 500;
+    border: 0 !important;
+    border-radius: var(--r-control) !important;
+    text-shadow: none !important;
+    text-decoration: none !important;
+}
+
+#sub_nav li a:hover {
+    background: var(--mist) !important;
+    color: var(--ink) !important;
+}
+
+#sub_nav li.active a,
+#sub_nav li a.active {
+    background: var(--signal-tint) !important;
+    color: var(--signal) !important;
+    font-weight: 600;
+}
+
+/* 5. SEARCH BAR AND TOOLBAR
+   ---------------------------------------------------------- */
+#basic_search,
+.search-form,
+#content .sticky.bar,
+.sticky.bar {
+    background: var(--white) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--r-panel) !important;
+    box-shadow: none !important;
+}
+
+#basic_search {
+    padding: 10px 14px !important;
+    margin-top: 14px !important;
+    margin-bottom: 16px !important;
+}
+
+/* 6. BUTTONS
+   ---------------------------------------------------------- */
+.button, .action-button, .btn,
+input[type="button"], input[type="reset"],
+input[type="submit"], button {
+    background: var(--white) !important;
+    background-image: none !important;
+    color: var(--ink) !important;
+    border: 1px solid var(--line-strong) !important;
+    border-radius: var(--r-control) !important;
+    font-weight: 600;
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.button:hover, .action-button:hover, .btn:hover,
+input[type="button"]:hover, input[type="reset"]:hover,
+button:hover {
+    background: var(--mist) !important;
+    border-color: var(--ink) !important;
+    color: var(--ink) !important;
+}
+
+input[type="submit"], button[type="submit"],
+.button.primary, .action-button.primary {
+    background: var(--signal) !important;
+    border-color: var(--signal) !important;
+    color: #fff !important;
+}
+
+input[type="submit"]:hover, button[type="submit"]:hover,
+.button.primary:hover {
+    background: var(--signal-dark) !important;
+    border-color: var(--signal-dark) !important;
+    color: #fff !important;
+}
+
+/* 7. FORM FIELDS
+   ---------------------------------------------------------- */
+input[type="text"], input[type="email"], input[type="password"],
+input[type="search"], input[type="tel"], input[type="number"],
+input[type="url"], input[type="date"], select, textarea {
+    background: var(--white) !important;
+    color: var(--ink);
+    border: 1px solid var(--line-strong) !important;
+    border-radius: var(--r-control) !important;
+    box-shadow: none !important;
+}
+
+input[type="text"]:focus, input[type="email"]:focus,
+input[type="password"]:focus, input[type="search"]:focus,
+input[type="tel"]:focus, input[type="number"]:focus,
+select:focus, textarea:focus {
+    border-color: var(--signal) !important;
+    box-shadow: 0 0 0 3px rgba(20, 110, 245, 0.15) !important;
+    outline: none;
+}
+
+/* 8. TICKET TABLE
+   ---------------------------------------------------------- */
+table.list {
+    width: 100% !important;
+    background: var(--white) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--r-panel);
+    border-collapse: separate !important;
+    border-spacing: 0 !important;
+    overflow: hidden;
+}
+
+table.list thead th,
+table.list thead th a {
+    padding: 12px 14px !important;
+    background: var(--mist) !important;
+    background-image: none !important;
+    color: var(--ink) !important;
+    font-size: 13px;
+    font-weight: 600;
+    text-shadow: none !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--line) !important;
+}
+
+table.list tbody td {
+    padding: 12px 14px !important;
+    background: var(--white) !important;
+    color: var(--text) !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--line) !important;
+    vertical-align: middle;
+}
+
+table.list tbody tr:last-child td {
+    border-bottom: 0 !important;
+}
+
+table.list tbody tr:hover td {
+    background: #F4F8FC !important;
+}
+
+table.list tbody td a {
+    color: var(--ink);
+    font-weight: 500;
+}
+
+table.list tbody td a:hover {
+    color: var(--signal);
+}
+
+/* "Select: All None Toggle" row and pagination */
+table.list tfoot td,
+#content .pull-left,
+#content .pull-right {
+    color: var(--muted);
+}
+
+/* 9. TICKET VIEW, TABS AND THREAD
+   ---------------------------------------------------------- */
+#ticket_tabs, ul.tabs, #ticket_tabs_container ul.tabs {
+    border-bottom: 1px solid var(--line) !important;
+    background: transparent !important;
+}
+
+ul.tabs li a {
+    background: transparent !important;
+    background-image: none !important;
+    color: var(--muted) !important;
+    border: 0 !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+}
+
+ul.tabs li a.active,
+ul.tabs li.active a {
+    color: var(--ink) !important;
+    border-bottom-color: var(--signal) !important;
+    font-weight: 600;
+}
+
+.thread-entry {
+    background: var(--white) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--r-panel) !important;
+    box-shadow: none !important;
+    overflow: hidden;
+}
+
+.thread-entry .header {
+    background: var(--paper) !important;
+    border-bottom: 1px solid var(--line) !important;
+    color: var(--muted);
+}
+
+.thread-entry.response {
+    border-left: 4px solid var(--signal) !important;
+}
+
+/* 10. DIALOGS AND POPUPS
+   ---------------------------------------------------------- */
+.dialog, #popup {
+    background: var(--white) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--r-panel) !important;
+    box-shadow: 0 20px 60px rgba(11, 22, 38, 0.25) !important;
+}
+
+/* 11. ALERTS
+   ---------------------------------------------------------- */
+#msg_notice, #msg_warning, #msg_error {
+    padding: 12px 16px !important;
+    border: 1px solid !important;
+    border-left-width: 4px !important;
+    border-radius: var(--r-control) !important;
+    background-image: none !important;
+}
+
+#msg_notice {
+    color: var(--ink-soft) !important;
+    background: var(--signal-tint) !important;
+    border-color: #B9D1FB !important;
+    border-left-color: var(--signal) !important;
+}
+
+#msg_warning {
+    color: #8A5A00 !important;
+    background: #FFF7E6 !important;
+    border-color: #F1D9A3 !important;
+    border-left-color: #D18B00 !important;
+}
+
+#msg_error {
+    color: var(--bad) !important;
+    background: #FDEEEE !important;
+    border-color: #F0C2C2 !important;
+    border-left-color: var(--bad) !important;
+}
+
+/* ==========================================================
+   QUEUE BAR (Open / My Tickets / Closed / Search / New Ticket)
+   Built from the diagnostic: nav > ul#sub_nav > li > a.
+   Only DIRECT children are styled, so the hidden dropdown
+   menus inside each item are never touched.
+   ========================================================== */
+
+nav#customQ_nav {
+    position: relative !important;
+    display: block !important;
+    float: none !important;
+    width: 100% !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    margin: 16px 0 14px !important;
+    padding: 0 !important;
+    background: var(--white) !important;
+    border: 1px solid var(--line) !important;
+    border-radius: var(--r-panel) !important;
+    box-shadow: none !important;
+}
+
+/* The list is pinned over the bar, so its collapsed height no longer matters */
+nav#customQ_nav > ul#sub_nav {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 4px !important;
+    width: auto !important;
+    height: 100% !important;
+    max-height: none !important;
+    margin: 0 !important;
+    padding: 0 8px 0 14px !important;
+    overflow: visible !important;
+    list-style: none !important;
+    background: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+nav#customQ_nav > ul#sub_nav > li {
+    position: relative !important;
+    float: none !important;
+    display: block !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+}
+
+nav#customQ_nav > ul#sub_nav > li > a {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 9px 14px !important;
+    line-height: 1.4 !important;
+    background: transparent !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: var(--r-control) !important;
+    box-shadow: none !important;
+    color: var(--text) !important;
+    font-weight: 500;
+    text-shadow: none !important;
+    text-decoration: none !important;
+    white-space: nowrap;
+}
+
+nav#customQ_nav > ul#sub_nav > li > a:hover {
+    background: var(--mist) !important;
+    color: var(--ink) !important;
+}
+
+nav#customQ_nav > ul#sub_nav > li > a.active {
+    background: var(--signal-tint) !important;
+    color: var(--signal) !important;
+    font-weight: 600;
+}
+
+/* The stray vertical line at the right edge: an empty helper element */
+nav#customQ_nav > *:not(ul#sub_nav) {
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
+/* ==========================================================
+   "OPEN" HEADING BAR (heading + toolbar buttons)
+   The bar becomes a fixed-height row and its contents are
+   centered vertically, so the heading and buttons sit evenly
+   between the gray line and the table whatever osTicket's own
+   padding does.
+   ========================================================== */
+
+div.sticky.bar.opaque,
+div.sticky.bar {
+    height: auto !important;
+    min-height: 64px !important;
+    padding: 0 !important;
+}
+
+div.sticky.bar > div.content {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    gap: 8px !important;
+    height: auto !important;
+    min-height: 64px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+div.sticky.bar > div.content::before,
+div.sticky.bar > div.content::after {
+    content: none !important;
+    display: none !important;
+}
+
+div.sticky.bar > div.content > .pull-left,
+div.sticky.bar > div.content > .flush-left {
+    float: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+div.sticky.bar > div.content > .pull-right,
+div.sticky.bar > div.content > .flush-right {
+    float: none !important;
+    margin: 0 0 0 auto !important;
+    padding: 0 !important;
+}
+
+div.sticky.bar > div.content h2 {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.3 !important;
+}
+
+/* ==========================================================
+   AGENT LOGIN PAGE
+   Panel rules above are never affected: everything here is
+   scoped to #loginBox, #brickwall, #company or #poweredBy.
+   ========================================================== */
+
+html:has(#loginBox),
+body:has(#loginBox) {
+    background: var(--ink) !important;
+    overflow-x: hidden !important;
+}
+
+#brickwall {
+    background: var(--ink) !important;
+    background-image: repeating-radial-gradient(
+        circle at 100% 0%,
+        transparent 0 46px,
+        rgba(255, 255, 255, 0.07) 46px 47px
+    ) !important;
+    filter: none !important;
+    max-width: 100vw !important;
+    overflow: hidden !important;
+}
+
+/* The card: centered with left/right 0 + auto margins, at EVERY
+   screen size. No left:50% and no translateX, so it cannot be
+   pushed sideways by osTicket's own -200px margin. */
+#loginBox#loginBox#loginBox {
+    position: fixed !important;
+    top: 44% !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: auto !important;
+    margin: 0 auto !important;
+    float: none !important;
+    transform: translateY(-50%) !important;
+    width: 400px !important;
+    max-width: calc(100% - 32px) !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 36px 32px 28px !important;
+    background: #fff !important;
+    border: 0 !important;
+    border-radius: 20px !important;
+    box-shadow: none !important;
+    -webkit-backdrop-filter: none !important;
+    backdrop-filter: none !important;
+}
+
+/* osTicket's frosted-glass layers: hide the blur, make the overlay solid white */
+#loginBox #blur,
+#loginBox #background {
+    display: none !important;
+}
+
+#loginBox:after {
+    background-color: #fff !important;
+    border-radius: 20px !important;
+}
+
+#loginBox #logo img,
+#loginBox h1 img {
+    display: none !important;
+}
+
+#loginBox #logo a,
+#loginBox h1 a {
+    display: block;
+    height: auto !important;
+    width: auto !important;
+    background: none !important;
+    text-indent: 0 !important;
+    color: var(--ink) !important;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    text-align: center;
+    font-size: 0;
+}
+
+#loginBox #logo a::after,
+#loginBox h1 a::after {
+    content: "Airye";
+    font-family: var(--font-display) !important;
+    font-size: 36px;
+}
+
+#loginBox #login-message,
+#loginBox h3 {
+    margin: 18px 0 22px;
+    color: var(--muted) !important;
+    font-size: 15px;
+    font-weight: 500;
+    text-align: center;
+}
+
+#loginBox .banner {
+    color: var(--bad) !important;
+}
+
+#loginBox input[type="text"],
+#loginBox input[type="password"],
+#loginBox input[type="email"] {
+    display: block;
+    width: 100% !important;
+    height: 46px;
+    margin: 0 0 12px !important;
+    padding: 0 14px !important;
+    font-size: 15px;
+}
+
+#loginBox button,
+#loginBox input[type="submit"],
+#loginBox .submit {
+    float: none !important;
+    display: block;
+    width: 100% !important;
+    height: 46px;
+    margin: 8px 0 0 !important;
+    padding: 0 18px !important;
+    background: var(--signal) !important;
+    border: 1px solid var(--signal) !important;
+    color: #fff !important;
+    font-size: 15px;
+}
+
+#loginBox button:hover,
+#loginBox input[type="submit"]:hover {
+    background: var(--signal-dark) !important;
+    border-color: var(--signal-dark) !important;
+}
+
+#loginBox a {
+    color: var(--signal);
+}
+
+/* Copyright line: directly under the card */
+#loginBox #company#company {
+    position: absolute !important;
+    top: 100% !important;
+    bottom: auto !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: auto !important;
+    margin: 16px 0 0 !important;
+    transform: none !important;
+    text-align: center !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: #8DA0B8 !important;
+    text-shadow: none !important;
+    z-index: 2;
+}
+
+#loginBox #company .content {
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: #8DA0B8 !important;
+    text-shadow: none !important;
+}
+
+/* "Powered by osTicket": pinned to the bottom of the screen */
+#poweredBy#poweredBy {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    bottom: 16px !important;
+    width: auto !important;
+    margin: 0 !important;
+    text-align: center !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    color: #8DA0B8 !important;
+    text-shadow: none !important;
+    z-index: 0 !important;
+    pointer-events: none;
+}
+
+#poweredBy a {
+    color: #8DA0B8 !important;
+}
+
+/* Small phones: tighter card padding */
+@media (max-width: 520px) {
+    #loginBox#loginBox#loginBox {
+        padding: 28px 20px 22px !important;
+    }
+}
+
+/* Keyboard open (very short screen): hide the footer lines */
+@media (max-height: 500px) {
+    #loginBox #company#company,
+    #poweredBy#poweredBy {
+        display: none !important;
+    }
+}
+
+/* ==========================================================
+   MOBILE AND TABLET — AGENT PANEL
+   ========================================================== */
+
+@media (max-width: 900px) {
+
+    #container {
+        padding: 0 14px 32px !important;
+    }
+
+    /* Header: wordmark on top, user links under it */
+    #header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 8px;
+        padding: 14px 0 10px !important;
+    }
+
+    #header p#info,
+    #header #info {
+        text-align: left !important;
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    /* Main nav and sub nav scroll sideways in one row */
+    ul#nav, #nav,
+    #sub_nav, ul#sub_nav {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    #nav::-webkit-scrollbar,
+    #sub_nav::-webkit-scrollbar {
+        display: none;
+    }
+
+    #nav li, #sub_nav li {
+        flex: 0 0 auto;
+    }
+
+    #nav li a, #nav a {
+        padding: 12px 12px 14px !important;
+        white-space: nowrap;
+    }
+
+    #sub_nav li a, #sub_nav a {
+        white-space: nowrap;
+    }
+
+    /* Wide tables scroll inside themselves instead of breaking the page */
+    table.list {
+        display: block !important;
+        max-width: 100%;
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    table.list thead th,
+    table.list tbody td {
+        white-space: nowrap;
+        padding: 10px 12px !important;
+    }
+
+    /* Search bar and action buttons wrap */
+    #basic_search {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    #basic_search input[type="text"],
+    #basic_search input[type="search"] {
+        flex: 1 1 100%;
+        min-width: 0;
+    }
+
+    #content .pull-left,
+    #content .pull-right {
+        float: none !important;
+    }
+
+    .button, .action-button, button {
+        min-height: 40px;
+    }
+
+    /* Ticket view: two-column info panels stack */
+    table.ticket_info,
+    #ticket_info,
+    .ticket_info,
+    #ticketInfo {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    #ticketInfo > table,
+    .ticket_info > table,
+    #ticketInfo table {
+        width: 100% !important;
+        float: none !important;
+        margin-bottom: 12px;
+    }
+
+    /* Forms: one field per row */
+    table.form_table,
+    table.form_table tbody,
+    table.form_table tr,
+    table.form_table td,
+    table.form_table th {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    table.form_table td,
+    table.form_table th {
+        padding: 6px 0 !important;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"],
+    input[type="search"], input[type="tel"], input[type="number"],
+    input[type="url"], input[type="date"], select, textarea {
+        max-width: 100% !important;
+        font-size: 16px !important;   /* stops iOS zooming into fields */
+        min-height: 42px;
+    }
+
+    /* Dialogs and popups fit the screen */
+    .dialog, #popup {
+        width: 94vw !important;
+        max-width: 94vw !important;
+        left: 3vw !important;
+        margin: 0 !important;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    /* Thread entries */
+    .thread-entry .header {
+        padding: 10px 12px !important;
+    }
+
+    .thread-entry .thread-body {
+        overflow-wrap: anywhere;
+    }
+
+    /* Footer */
+    #footer {
+        padding: 20px 0 8px !important;
+    }
+}
+
+@media (max-width: 700px) {
+
+    /* Queue bar: links scroll sideways inside the bar */
+    nav#customQ_nav > ul#sub_nav {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    /* "Open" heading bar: heading and buttons wrap onto two lines */
+    div.sticky.bar > div.content {
+        flex-wrap: wrap !important;
+        padding: 10px 0 !important;
+    }
+
+    div.sticky.bar > div.content > .pull-right,
+    div.sticky.bar > div.content > .flush-right {
+        margin-left: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    #container {
+        padding: 0 10px 24px !important;
+    }
+
+    #header #logo::after {
+        font-size: 26px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+}
+/* Space between the bar's left border and the green refresh icon */
+div.sticky.bar > div.content > .pull-left,
+div.sticky.bar > div.content > .flush-left {
+    padding-left: 18px !important;
+}
+
+/* Matching space on the right so the toolbar buttons don't touch the border */
+div.sticky.bar > div.content > .pull-right,
+div.sticky.bar > div.content > .flush-right {
+    padding-right: 18px !important;
+}
+/* ==========================================================
+   TICKET VIEW TABS: Ticket Thread / Tasks / Post Reply /
+   Post Internal Note. Visual properties only.
+   ========================================================== */
+
+/* Tab rows: flat, one thin baseline */
+ul.tabs {
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-bottom: 1px solid var(--line) !important;
+    box-shadow: none !important;
+}
+
+/* Each tab's outer box: no border, no gray fill, no rounded corners */
+ul.tabs li {
+    background: none !important;
+    background-image: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+/* The tab itself: text with an underline */
+ul.tabs li a {
+    padding: 10px 16px 11px !important;
+    background: none !important;
+    background-image: none !important;
+    color: var(--muted) !important;
+    font-weight: 500;
+    border: 0 !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    text-decoration: none !important;
+}
+
+ul.tabs li a:hover {
+    color: var(--ink) !important;
+    border-bottom-color: var(--line-strong) !important;
+}
+
+ul.tabs li a.active,
+ul.tabs li.active a {
+    color: var(--ink) !important;
+    font-weight: 600;
+    border-bottom: 2px solid var(--signal) !important;
+}
+
+/* Content under the tabs: white, no beige or gray panel */
+.tab_content,
+#response_options,
+#response_options .tab_content,
+#response_options form {
+    background: var(--white) !important;
+    background-image: none !important;
+    box-shadow: none !important;
+}
+
+#response_options {
+    border: 1px solid var(--line) !important;
+    border-radius: var(--r-panel) !important;
+}
+
+#response_options .tab_content {
+    border: 0 !important;
+}
+
+/* Thread entry edges: same soft border all the way round */
+.thread-entry,
+.thread-entry.message,
+.thread-entry.response,
+.thread-entry.note {
+    border: 1px solid var(--line) !important;
+    box-shadow: none !important;
+}
+
+.thread-entry.response {
+    border-left: 4px solid var(--signal) !important;
+}
+
+.thread-entry .thread-body {
+    border: 0 !important;
+}
+/* ==========================================================
+   TICKET VIEW TABS, second pass: equal heights + blue underline
+   ========================================================== */
+
+ul.tabs {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    align-items: flex-end !important;
+    gap: 2px !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    list-style: none !important;
+    border-bottom: 1px solid var(--line) !important;
+}
+
+ul.tabs::before,
+ul.tabs::after {
+    content: none !important;
+    display: none !important;
+}
+
+ul.tabs li {
+    float: none !important;
+    position: relative !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 0 -1px !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    line-height: 1.4 !important;
+}
+
+ul.tabs li a,
+ul.tabs li a.active,
+ul.tabs li.active a {
+    display: block !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 10px 16px 12px !important;
+    line-height: 1.4 !important;
+    font-size: 14px !important;
+    background: none !important;
+    border: 0 !important;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    top: 0 !important;
+}
+
+ul.tabs li a:hover {
+    border-bottom-color: var(--line-strong) !important;
+}
+
+ul.tabs li a.active,
+ul.tabs li.active a {
+    color: var(--ink) !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid var(--signal) !important;
+}
+
+/* A little room between the tabs and the content under them */
+.tab_content {
+    padding-top: 14px !important;
+}
+/* ==========================================================
+   THREAD ENTRY: remove the doubled line above the header
+   ========================================================== */
+
+/* Wrappers around the thread: no borders or shadows of their own */
+#ticket_thread,
+#thread-items,
+.thread-entry-wrapper,
+#ticket_thread .thread-entry-container {
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+/* Pseudo-elements that draw extra edges */
+.thread-entry::before,
+.thread-entry::after,
+.thread-entry .header::before,
+.thread-entry .header::after {
+    content: none !important;
+    display: none !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: none !important;
+}
+
+/* The box owns the border; the header must not add its own at the top */
+.thread-entry {
+    border: 1px solid var(--line) !important;
+    border-radius: var(--r-panel) !important;
+    box-shadow: none !important;
+    overflow: hidden !important;
+}
+
+.thread-entry > .header,
+.thread-entry .header {
+    border-top: 0 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Staff replies keep the blue left edge */
+.thread-entry.response {
+    border-left: 4px solid var(--signal) !important;
+}
+/* Ticket page: heading on the left, toolbar buttons on the right */
+div.sticky.bar > div.content > div:not(.pull-right):not(.flush-right) {
+    order: -1 !important;
+    margin-right: auto !important;
+}
+
+div.sticky.bar > div.content > .pull-right,
+div.sticky.bar > div.content > .flush-right {
+    order: 1 !important;
+    margin-left: auto !important;
+}
+
+/* ==========================================================
+   MOBILE: TICKET PAGES (agent panel)
+   ========================================================== */
+
+@media (max-width: 900px) {
+
+    nav#customQ_nav {
+        height: auto !important;
+        min-height: 0 !important;
+        padding: 6px !important;
+    }
+
+    nav#customQ_nav > ul#sub_nav {
+        position: static !important;
+        height: auto !important;
+        flex-wrap: wrap !important;
+        overflow: visible !important;
+        padding: 0 !important;
+    }
+
+    nav#customQ_nav > ul#sub_nav > li > a {
+        padding: 10px 12px !important;
+    }
+
+    #basic_search form {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        align-items: center !important;
+    }
+
+    #basic_search form input[type="text"],
+    #basic_search form input[type="search"] {
+        flex: 1 1 60% !important;
+        min-width: 0 !important;
+        width: auto !important;
+    }
+
+    div.sticky.bar > div.content {
+        flex-wrap: wrap !important;
+        row-gap: 10px !important;
+        padding: 12px 0 !important;
+        min-height: 0 !important;
+    }
+
+    div.sticky.bar > div.content > div {
+        max-width: 100% !important;
+    }
+
+    div.sticky.bar > div.content > .pull-right,
+    div.sticky.bar > div.content > .flush-right {
+        margin-left: 0 !important;
+        padding-left: 18px !important;
+        order: 2 !important;
+        flex-wrap: wrap !important;
+    }
+
+    table.ticket_info,
+    table.ticket_info > tbody,
+    table.ticket_info > tbody > tr,
+    table.ticket_info > tbody > tr > td {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    table.ticket_info table {
+        width: 100% !important;
+    }
+
+    table.ticket_info td,
+    table.ticket_info th {
+        word-break: break-word;
+    }
+
+    ul.tabs {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+    }
+
+    ul.tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    ul.tabs li {
+        flex: 0 0 auto !important;
+    }
+
+    ul.tabs li a {
+        white-space: nowrap !important;
+    }
+
+    .thread-entry {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .thread-entry .thread-body img,
+    .thread-entry .thread-body table {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+
+    #response_options,
+    #response_options table,
+    #response_options tbody,
+    #response_options tr,
+    #response_options td,
+    #response_options th {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    #response_options td,
+    #response_options th {
+        padding: 6px 12px !important;
+    }
+
+    #response_options select,
+    #response_options input[type="text"],
+    #response_options textarea {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .redactor-box,
+    .redactor-box .redactor-editor,
+    .richtext {
+        max-width: 100% !important;
+    }
+
+    #content .pull-left,
+    #content .pull-right {
+        float: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+
+    div.sticky.bar .action-button,
+    div.sticky.bar .button {
+        padding: 6px 8px !important;
+        min-height: 36px !important;
+    }
+
+    ul.tabs li a {
+        padding: 10px 12px 12px !important;
+    }
+}
